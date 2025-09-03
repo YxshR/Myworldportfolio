@@ -1,0 +1,425 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  /* Primary Dark Theme */
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --bg-tertiary: #1a1a1a;
+  
+  /* Accent Colors */
+  --accent-gold: #d4af37;
+  --accent-silver: #c0c0c0;
+  --accent-blue: #4a9eff;
+  
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --text-muted: #666666;
+  
+  /* Glass Morphism */
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: rgba(0, 0, 0, 0.3);
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+  --gradient-accent: linear-gradient(135deg, #d4af37 0%, #c0c0c0 100%);
+  --gradient-glow: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
+  --gradient-radial: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
+@theme inline {
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-tertiary: var(--bg-tertiary);
+  --color-accent-gold: var(--accent-gold);
+  --color-accent-silver: var(--accent-silver);
+  --color-accent-blue: var(--accent-blue);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+}
+
+/* Additional utility classes */
+.bg-gradient-radial {
+  background-image: var(--gradient-radial);
+}
+
+.bg-size-200 {
+  background-size: 200% 200%;
+}
+
+.animate-shimmer {
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+}
+
+/* Enhanced Glass Morphism Utility Classes */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  box-shadow: 
+    0 8px 32px var(--glass-shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+
+.glass-card:hover::before {
+  left: 100%;
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 0 40px rgba(212, 175, 55, 0.1);
+}
+
+/* Premium Button Styles */
+.btn-primary {
+  background: var(--gradient-accent);
+  color: var(--bg-primary);
+  font-weight: 600;
+  padding: 12px 32px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+/* Elegant Form Input Styles */
+.input-luxury {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 16px 20px;
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.input-luxury:focus {
+  outline: none;
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.input-luxury::placeholder {
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+/* GitHub Button Styles */
+.github-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.github-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Enter World Button Styles */
+.enter-world-button {
+  background: var(--gradient-accent);
+  color: var(--bg-primary);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+}
+
+.enter-world-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.6s;
+}
+
+.enter-world-button:hover::before {
+  left: 100%;
+}
+
+.enter-world-button:hover {
+  box-shadow: 0 15px 50px rgba(212, 175, 55, 0.4);
+  transform: translateY(-3px) scale(1.05);
+}
+
+/* Enhanced Animation Utilities */
+.interactive-element {
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.premium-fade-in {
+  animation: premiumFadeIn 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.cinematic-entrance {
+  animation: cinematicEntrance 1.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.depth-focus {
+  filter: blur(0px);
+  transition: filter 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.depth-blur {
+  filter: blur(2px);
+}
+
+@keyframes premiumFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.9);
+    filter: blur(10px);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translateY(-5px) scale(1.02);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes cinematicEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(60px) scale(0.8) rotateX(10deg);
+    filter: blur(15px);
+  }
+  40% {
+    opacity: 0.6;
+    transform: translateY(10px) scale(1.05) rotateX(-2deg);
+    filter: blur(5px);
+  }
+  70% {
+    opacity: 0.9;
+    transform: translateY(-8px) scale(1.02) rotateX(1deg);
+    filter: blur(1px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateX(0deg);
+    filter: blur(0px);
+  }
+}
+
+@keyframes luxuryPulse {
+  0%, 100% { 
+    opacity: 0.6; 
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% { 
+    opacity: 1; 
+    transform: scale(1.08);
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes slideInLuxury {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes orbit {
+  from {
+    transform: rotate(0deg) translateX(200px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(200px) rotate(-360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-effect {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Star Label Styles */
+.star-label {
+  pointer-events: none;
+  user-select: none;
+  z-index: 1000;
+}
+
+.star-label-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.star-label-name {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 6px 12px;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.star-label-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.star-label-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  box-shadow: 
+    0 0 8px currentColor,
+    0 0 16px currentColor,
+    0 2px 4px rgba(0, 0, 0, 0.3);
+  animation: starLabelPulse 2s ease-in-out infinite;
+}
+
+.star-label:hover .star-label-name {
+  background: rgba(0, 0, 0, 0.9);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+  box-shadow: 
+    0 6px 24px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+@keyframes starLabelPulse {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* Elegant star label variants */
+.star-label-premium .star-label-name {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(192, 192, 192, 0.2));
+  border-color: rgba(212, 175, 55, 0.4);
+  color: var(--accent-gold);
+  font-weight: 600;
+}
+
+.star-label-owned .star-label-name {
+  background: linear-gradient(135deg, rgba(74, 158, 255, 0.2), rgba(138, 187, 255, 0.2));
+  border-color: rgba(74, 158, 255, 0.4);
+  color: var(--accent-blue);
+}
